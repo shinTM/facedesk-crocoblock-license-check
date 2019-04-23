@@ -29,12 +29,14 @@ $(document).ready( function() {
 					'label': 'Site Count',
 					'value': 'unknow'
 				},
-			};
-
-		//https://account.crocoblock.com?edd-api=sales&key=e50b6acb4e85748609a4aa53d4a45fd6&token=fb24cfe0a5b48e362454e628ce98b6e9&purchasekey=9987991e2312edc1a152385ed8706d5b
+			},
+			appActivatedRequest = false;
 
 		client.events.on('app.activated', function() {
-			//renderInfoBlock();
+			if ( ! appActivatedRequest ) {
+				appActivatedRequest = true;
+				getLicenseInfo();
+			}
 		});
 
 		$refreshInfoButton.on( 'click', function() {
